@@ -30,7 +30,7 @@ export default defineConfig({
 
 ### eslintOptions
 
-- Type: `ESLint.Options`
+- Type: [ESLint.Options](https://eslint.org/docs/developer-guide/nodejs-api#-new-eslintoptions)
 - Default: `{ cache: true }`
 
 ### shouldLint
