@@ -3,7 +3,7 @@ const { ESLint } = require("eslint");
 const { normalizePath } = require("vite");
 
 module.exports = function eslintPlugin(options = {}) {
-  const { eslintOptions = {}, shouldLint = (path) => path.match(/.[jt]sx?$/) } =
+  const { eslintOptions = {}, shouldLint = (path) => path.match(/\.[jt]sx?$/) } =
     options;
   const eslint = new ESLint({ cache: true, ...eslintOptions });
 

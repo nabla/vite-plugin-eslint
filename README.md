@@ -36,4 +36,4 @@ export default defineConfig({
 ### shouldLint
 
 - Type: `(path: string) => boolean`
-- Default: `(path) => path.match(/.[jt]sx?$/)`
+- Default: `(path) => path.match(/\.[jt]sx?$/)`

@@ -1,6 +1,6 @@
 {
   "name": "@nabla/vite-plugin-eslint",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "description": "Plugs ESLint into Vite dev server",
   "homepage": "https://github.com/nabla/vite-plugin-eslint#readme",
