@@ -1,4 +1,4 @@
-# @nabla/vite-plugin-eslint ![npm (scoped)](https://img.shields.io/npm/v/@nabla/vite-plugin-eslint)
+# @nabla/vite-plugin-eslint [![npm](https://img.shields.io/npm/v/@nabla/vite-plugin-eslint)](https://www.npmjs.com/package/@nabla/vite-plugin-eslint)
 
 Plugs ESLint into Vite dev server.
 
