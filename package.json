@@ -18,8 +18,7 @@
   ],
   "main": "index.js",
   "dependencies": {
-    "@types/eslint": "*",
-    "chalk": "*"
+    "@types/eslint": "*"
   },
   "peerDependencies": {
     "vite": "^2",

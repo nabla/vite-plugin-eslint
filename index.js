@@ -1,4 +1,3 @@
-const chalk = require("chalk");
 const { ESLint } = require("eslint");
 const { normalizePath } = require("vite");
 
@@ -17,17 +16,18 @@ module.exports = function eslintPlugin(options = {}) {
       if (path.includes("/src/") && shouldLint(path)) {
         eslint.isPathIgnored(path).then(async (ignored) => {
           if (ignored) return;
-          const [report] = await eslint.lintFiles(path);
-          report.messages.forEach((m) => {
-            const prettyPath = path.slice(path.indexOf("/src/") + 1);
-            const location = `${prettyPath}(${m.line},${m.column})`;
-            const rule = m.ruleId ? ` ${m.ruleId}` : "";
-            console.log(
-              `${location}: ${chalk[m.severity === 2 ? "red" : "yellow"](
-                `${m.message}`
-              )}${rule}`
-            );
-          });
+          const report = await eslint.lintFiles(path);
+          const formatter = await eslint.loadFormatter('stylish');
+          const result = formatter.format(report);
+          const hasWarnings = report.some(
+              (item) => item.warningCount !== 0
+          );
+          const hasErrors = report.some(
+              (item) => item.errorCount !== 0
+          );
+          if (hasWarnings || hasErrors) {
+            console.log(result);
+          }
         });
       }
       return null;
