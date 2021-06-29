@@ -36,4 +36,10 @@ export default defineConfig({
 ### shouldLint
 
 - Type: `(path: string) => boolean`
-- Default: `(path) => path.match(/\.[jt]sx?$/)`
+- Default: `(path) => path.match(/\/src\/.*\.[jt]sx?$/)`
+
+### formatter
+
+- Type: `string`
+
+If provided, the value is passed to `eslint.loadFormatter`. Default to a custom format with one line per warning/error. Use `stylish` to get a CRA like output.
