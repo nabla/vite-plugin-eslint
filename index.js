@@ -1,44 +1,24 @@
-const chalk = require("chalk");
-const { ESLint } = require("eslint");
+const path = require("path");
+const { Worker } = require("worker_threads");
 const { normalizePath } = require("vite");
 
 module.exports = function eslintPlugin(options = {}) {
   const {
     eslintOptions = {},
     shouldLint = (path) => path.match(/\/src\/.*\.[jt]sx?$/),
-    formatter: format,
+    formatter,
   } = options;
-  const eslint = new ESLint({ cache: true, ...eslintOptions });
 
-  const formatterPromise = format ? eslint.loadFormatter(format) : undefined;
+  const worker = new Worker(path.resolve(__dirname, "./worker.js"), {
+    workerData: { options: { cache: true, ...eslintOptions }, formatter },
+  });
 
   return {
     name: "eslint",
     apply: "serve",
     transform(_code, id) {
       const path = normalizePath(id);
-      if (shouldLint(path)) {
-        eslint.isPathIgnored(path).then(async (ignored) => {
-          if (ignored) return;
-          const [report] = await eslint.lintFiles(path);
-          if (report.messages.length === 0) return;
-          if (formatterPromise) {
-            const formatter = await formatterPromise;
-            console.log(formatter.format([report]));
-          } else {
-            report.messages.forEach((m) => {
-              const prettyPath = path.slice(path.indexOf("/src/") + 1);
-              const location = `${prettyPath}(${m.line},${m.column})`;
-              const rule = m.ruleId ? ` ${m.ruleId}` : "";
-              console.log(
-                `${location}: ${chalk[m.severity === 2 ? "red" : "yellow"](
-                  `${m.message}`
-                )}${rule}`
-              );
-            });
-          }
-        });
-      }
+      if (shouldLint(path)) worker.postMessage(path);
       return null;
     },
   };
