@@ -1,5 +1,6 @@
 const { workerData, parentPort } = require("worker_threads");
 const chalk = require("chalk");
+const fs = require("fs").promises;
 const { ESLint } = require("eslint");
 
 const eslint = new ESLint(workerData.options);
@@ -30,6 +31,7 @@ parentPort.on("message", (path) => {
           );
         });
       }
+      if (report.output !== undefined) await fs.writeFile(path, report.output);
     })
     .catch((e) => {
       if (e.messageTemplate === "file-not-found" && e.messageData?.pattern) {
