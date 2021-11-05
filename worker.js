@@ -15,6 +15,7 @@ parentPort.on("message", (path) => {
     .then(async (ignored) => {
       if (ignored) return;
       const [report] = await eslint.lintFiles(path);
+      if (report.output !== undefined) await fs.writeFile(path, report.output);
       if (report.messages.length === 0) return;
       if (formatterPromise) {
         const formatter = await formatterPromise;
@@ -31,7 +32,6 @@ parentPort.on("message", (path) => {
           );
         });
       }
-      if (report.output !== undefined) await fs.writeFile(path, report.output);
     })
     .catch((e) => {
       if (e.messageTemplate === "file-not-found" && e.messageData?.pattern) {

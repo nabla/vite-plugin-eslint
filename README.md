@@ -33,6 +33,8 @@ export default defineConfig({
 - Type: [ESLint.Options](https://eslint.org/docs/developer-guide/nodejs-api#-new-eslintoptions)
 - Default: `{ cache: true }`
 
+Note: the `fix` option is only supported from `1.3.4`
+
 ### shouldLint
 
 - Type: `(path: string) => boolean`
