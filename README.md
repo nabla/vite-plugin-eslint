@@ -38,7 +38,7 @@ Note: the `fix` option is only supported from `1.3.4`
 ### shouldLint
 
 - Type: `(path: string) => boolean`
-- Default: `(path) => path.match(/\/src\/.*\.[jt]sx?$/)`
+- Default: `(path) => path.match(/\/src\/[^?]*\.(vue|m?[jt]sx?)$/)`
 
 ### formatter
 
