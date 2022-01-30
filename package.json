@@ -1,23 +1,19 @@
 {
   "name": "@nabla/vite-plugin-eslint",
+  "description": "Plugs ESLint into Vite dev server",
   "version": "1.3.5",
   "license": "MIT",
-  "description": "Plugs ESLint into Vite dev server",
-  "homepage": "https://github.com/nabla/vite-plugin-eslint#readme",
-  "author": "arnaud@nabla.com",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nabla/vite-plugin-eslint.git"
-  },
-  "bugs": {
-    "url": "https://github.com/nabla/vite-plugin-eslint/issues"
-  },
+  "author": "Arnaud Barré (https://github.com/ArnaudBarre)",
+  "main": "index.js",
+  "repository": "github:nabla/vite-plugin-eslint",
   "keywords": [
     "vite",
     "eslint",
     "vite-plugin"
   ],
-  "main": "index.js",
+  "scripts": {
+    "prettier": "prettier --write '**/*.{js,ts,json,md,yml}'"
+  },
   "dependencies": {
     "@types/eslint": "*",
     "chalk": "^4.0.0"
