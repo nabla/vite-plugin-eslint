@@ -40,6 +40,8 @@ Note: the `fix` option is only supported from `1.3.4`
 - Type: `(path: string) => boolean`
 - Default: `(path) => path.match(/\/src\/[^?]*\.(vue|m?[jt]sx?)$/)`
 
+You can use `DEBUG=eslint node_modules/.bin/vite` to debug this option (available in `1.4.0`)
+
 ### formatter
 
 - Type: `string`

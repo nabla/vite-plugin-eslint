@@ -1,5 +1,6 @@
 const { resolve } = require("path");
 const { Worker } = require("worker_threads");
+const debug = require("debug")("eslint");
 const { normalizePath } = require("vite");
 
 module.exports = function eslintPlugin(options = {}) {
@@ -21,7 +22,11 @@ module.exports = function eslintPlugin(options = {}) {
           workerData: { options: { cache: true, ...eslintOptions }, formatter },
         });
       }
-      if (shouldLint(path)) worker.postMessage(path);
+      if (shouldLint(path)) {
+        worker.postMessage(path);
+      } else {
+        debug(`${path} was ignored by shouldLint`);
+      }
       return null;
     },
   };

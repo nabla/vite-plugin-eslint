@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.4.0
+
+- Update default shouldLint option to include `.vue`, `.mjs` & `.mts` files by default
+- Add debug log when a file is ignored by shouldLint ([#7](https://github.com/nabla/vite-plugin-eslint/issues/7))
+
 ## 1.3.5
 
 Pin chalk to v4 ([#5](https://github.com/nabla/vite-plugin-eslint/issues/5))
