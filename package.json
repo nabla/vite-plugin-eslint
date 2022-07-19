@@ -1,7 +1,7 @@
 {
   "name": "@nabla/vite-plugin-eslint",
   "description": "Plugs ESLint into Vite dev server",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "license": "MIT",
   "author": "Arnaud Barré (https://github.com/ArnaudBarre)",
   "main": "src/index.js",
@@ -19,15 +19,15 @@
   },
   "dependencies": {
     "@types/eslint": "*",
-    "chalk": "^4.0.0"
+    "chalk": "^4"
   },
   "peerDependencies": {
-    "vite": "^2",
+    "vite": "^2 || ^3",
     "eslint": "*"
   },
   "devDependencies": {
-    "eslint": "^7.28.0",
-    "prettier": "^2.3.1",
-    "vite": "^2.3.7"
+    "eslint": "^8.20.0",
+    "prettier": "^2.7.1",
+    "vite": "^3.0.2"
   }
 }

@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.1
+
+Add vite@3 to peer dependency range
+
 ## 1.4.0
 
 - Update default shouldLint option to include `.vue`, `.mjs` & `.mts` files by default
