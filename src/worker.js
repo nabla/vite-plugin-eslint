@@ -19,7 +19,7 @@ parentPort.on("message", (path) => {
       if (report.messages.length === 0) return;
       if (formatterPromise) {
         const formatter = await formatterPromise;
-        console.log(formatter.format([report]));
+        console.log(await formatter.format([report]));
       } else {
         report.messages.forEach((m) => {
           const prettyPath = path.slice(path.indexOf("/src/") + 1);
