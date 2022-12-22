@@ -38,7 +38,7 @@ Note: the `fix` option is only supported from `1.3.4`
 ### shouldLint
 
 - Type: `(path: string) => boolean`
-- Default: `(path) => path.match(/\/src\/[^?]*\.(vue|m?[jt]sx?)$/)`
+- Default: `(path) => path.match(/\/src\/[^?]*\.(vue|svelte|m?[jt]sx?)$/)`
 
 You can use `DEBUG=eslint node_modules/.bin/vite` to debug this option (available in `1.4.0`)
 
@@ -46,4 +46,4 @@ You can use `DEBUG=eslint node_modules/.bin/vite` to debug this option (availabl
 
 - Type: `string`
 
-If provided, the value is passed to `eslint.loadFormatter`. Default to a custom format with one line per warning/error. Use `stylish` to get a CRA like output.
+If provided, the value is passed to `eslint.loadFormatter`. Default to a custom format with one line per warning/error. Use `stylish` to get a CRA like output. Async formatters are supported in `1.5.0`.

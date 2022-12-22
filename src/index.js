@@ -6,7 +6,7 @@ const { normalizePath } = require("vite");
 module.exports = function eslintPlugin(options = {}) {
   const {
     eslintOptions = {},
-    shouldLint = (path) => path.match(/\/src\/[^?]*\.(vue|m?[jt]sx?)$/),
+    shouldLint = (path) => path.match(/\/src\/[^?]*\.(vue|svelte|m?[jt]sx?)$/),
     formatter,
   } = options;
 

@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.5.0
+
+- Support async formatters ([#17](https://github.com/nabla/vite-plugin-eslint/pull/17))
+- Add `.svelte` to default shouldLint regex
+
 ## 1.4.2
 
 Add vite@4 to peer dependency range
