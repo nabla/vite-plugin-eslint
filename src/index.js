@@ -1,6 +1,6 @@
 const { resolve } = require("path");
 const { Worker } = require("worker_threads");
-const debug = require("debug")("eslint");
+const debug = require("debug")("vite-plugin-eslint");
 const { normalizePath } = require("vite");
 
 module.exports = function eslintPlugin(options = {}) {
@@ -13,7 +13,7 @@ module.exports = function eslintPlugin(options = {}) {
   let worker; // Don't initialize worker for builds
 
   return {
-    name: "eslint",
+    name: "vite-plugin-eslint",
     apply: "serve",
     transform(_code, id) {
       const path = normalizePath(id);
