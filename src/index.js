@@ -13,7 +13,7 @@ module.exports = function eslintPlugin(options = {}) {
   let worker; // Don't initialize worker for builds
 
   return {
-    name: "eslint",
+    name: "vite-plugin-eslint",
     apply: "serve",
     transform(_code, id) {
       const path = normalizePath(id);

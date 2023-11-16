@@ -15,6 +15,7 @@ parentPort.on("message", (path) => {
     .then(async (ignored) => {
       if (ignored) return;
       const [report] = await eslint.lintFiles(path);
+      if (!report) return; // Can be empty with errorOnUnmatchedPattern: false
       if (report.output !== undefined) await fs.writeFile(path, report.output);
       if (report.messages.length === 0) return;
       if (formatterPromise) {
@@ -27,8 +28,8 @@ parentPort.on("message", (path) => {
           const rule = m.ruleId ? ` ${m.ruleId}` : "";
           console.log(
             `${location}: ${chalk[m.severity === 2 ? "red" : "yellow"](
-              m.message
-            )}${rule}`
+              m.message,
+            )}${rule}`,
           );
         });
       }
@@ -38,8 +39,8 @@ parentPort.on("message", (path) => {
         // Can happen when the file is deleted or moved
         console.log(
           `${chalk.yellow(`[eslint] File not found`)} ${chalk.dim(
-            e.messageData.pattern
-          )}`
+            e.messageData.pattern,
+          )}`,
         );
       } else {
         // Otherwise log the full error

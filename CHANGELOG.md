@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.6.0
+
+- Add vite@5 to peer dependency range
+- Fix error when using `errorOnUnmatchedPattern: false`
+- Update plugin name from `eslint` to `vite-plugin-eslint` to avoid confusion in case of errors reported by Vite
+
 ## 1.5.0
 
 - Support async formatters ([#17](https://github.com/nabla/vite-plugin-eslint/pull/17))
