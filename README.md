@@ -44,6 +44,7 @@ You can use `DEBUG=eslint node_modules/.bin/vite` to debug this option (availabl
 
 ### formatter
 
-- Type: `string`
+- Type: `string | ((result: ESLint.LintResult) => void)`
+- Default: Custom format with one line per warning/error.
 
-If provided, the value is passed to `eslint.loadFormatter`. Default to a custom format with one line per warning/error. Use `stylish` to get a CRA like output. Async formatters are supported in `1.5.0`.
+If provided, the value is passed to `eslint.loadFormatter`. Use `stylish` to get a CRA like output. Async formatters are supported in `1.5.0`. Function support was added in `1.7.0`.

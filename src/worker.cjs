@@ -1,15 +1,28 @@
 const { workerData, parentPort } = require("worker_threads");
 const chalk = require("chalk");
 const fs = require("fs").promises;
-const { ESLint } = require("eslint");
+const {
+  FlatESLint,
+  LegacyESLint,
+  shouldUseFlatConfig,
+} = require("eslint/use-at-your-own-risk");
 
-const eslint = new ESLint(workerData.options);
+let eslint;
+
+const initPromise = shouldUseFlatConfig().then((useFlatConfig) => {
+  if (useFlatConfig) {
+    eslint = new FlatESLint(workerData.options);
+  } else {
+    eslint = new LegacyESLint(workerData.options);
+  }
+});
 
 const formatterPromise = workerData.formatter
-  ? eslint.loadFormatter(workerData.formatter)
+  ? initPromise.then(() => eslint.loadFormatter(workerData.formatter))
   : undefined;
 
-parentPort.on("message", (path) => {
+parentPort.on("message", async (path) => {
+  if (!eslint) await initPromise;
   eslint
     .isPathIgnored(path)
     .then(async (ignored) => {
@@ -21,6 +34,8 @@ parentPort.on("message", (path) => {
       if (formatterPromise) {
         const formatter = await formatterPromise;
         console.log(await formatter.format([report]));
+      } else if (workerData.customFormatter) {
+        parentPort.postMessage(report);
       } else {
         report.messages.forEach((m) => {
           const prettyPath = path.slice(path.indexOf("/src/") + 1);

@@ -1,0 +1,13 @@
+{
+  "name": "playground",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --open",
+    "dev:cjs": "vite --open --config vite.config.cjs"
+  },
+  "devDependencies": {
+    "eslint": "^8.54.0",
+    "vite": "^5.0.0"
+  }
+}

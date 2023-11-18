@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.2
+
+- Support ESLint flat config (fixes [#23](https://github.com/nabla/vite-plugin-eslint/issues/23))
+- Support passing a function to formatter
+- Switch to ESM. This removes the CJS warning when using the plugin with Vite 5. A CJS wrapper is still provided but [migrating](https://vitejs.dev/guide/migration.html#deprecate-cjs-node-api) to running Vite in ESM is encouraged
+- Drop support for Vite 2 & 3 & node<18 (aligns with Vite 5)
+
 ## 1.6.0
 
 - Add vite@5 to peer dependency range
