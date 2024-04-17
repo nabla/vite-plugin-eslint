@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.3
+
+- Add explicit `debug` dependency
+- Change ESLint peer dependency range to `^8.43 || ^9` to match the changes made to support flat config in 2.0.2
+
 ## 2.0.2
 
 - Support ESLint flat config (fixes [#23](https://github.com/nabla/vite-plugin-eslint/issues/23))
