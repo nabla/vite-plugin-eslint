@@ -1,9 +1,9 @@
 # Changelog
 
-## 2.0.3
+## 2.0.4
 
 - Add explicit `debug` dependency
-- Change ESLint peer dependency range to `^8.43 || ^9` to match the changes made to support flat config in 2.0.2
+- Change ESLint peer dependency range to `^8.45 || ^9` to match the changes made to support flat config in 2.0.2
 
 ## 2.0.2
 
