@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.6
+
+- Add vite@7 to peer dependency range
+
 ## 2.0.5
 
 - Add vite@6 to peer dependency range
