@@ -8,7 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ contains(github.event.head_commit.message, '[publish]') }}
     steps:
-      - uses: actions/checkout@v2
-      - uses: ArnaudBarre/npm-publish@v1
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          npm-token: ${{ secrets.NPM_TOKEN }}
+          node-version: '22.x'
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
